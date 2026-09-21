@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>뉴스 스크랩 대시보드 · OO 산업단지</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="description" content="관심 기관·사업지 관련 언론보도를 한 화면에서 검색·필터링하는 뉴스 스크랩 대시보드">
+<meta name="theme-color" content="#052561">
+<meta property="og:title" content="뉴스 스크랩 대시보드">
+<meta property="og:description" content="관심 기관·사업지 언론보도 모음">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23256ef4'/><text y='72' x='50' text-anchor='middle' font-size='58' font-family='sans-serif' font-weight='bold' fill='white'>N</text></svg>">
+</head>
+<body>
+<a class="skip-link" href="#main">본문 바로가기</a>
+
+<div class="gnb">
+  <div class="wrap">
+    <strong>뉴스 스크랩 대시보드</strong>
+    <span class="gnb-note">구글뉴스 기반 수집 · 원문 링크 제공</span>
+  </div>
+</div>
+
+<header class="header">
+  <div class="wrap">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">뉴스</div>
+      <div class="brand-txt">
+        <h1 id="siteTitle">OO 산업단지 언론보도 모니터링</h1>
+        <p><span id="siteSub">언론보도 모니터링</span> <span id="updated"></span></p>
+      </div>
+    </div>
+    <div class="search" id="searchWrap">
+      <label class="sr-only" for="q">기사 검색</label>
+      <input type="search" id="q" placeholder="제목·요약·매체 검색 (예: 인허가, 보증, 폐수)" autocomplete="off">
+      <button type="button" class="search-clear" id="clearBtn" aria-label="검색어 지우기">✕</button>
+      <span class="search-btn" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>
+        </svg>
+      </span>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <h2 class="sr-only">수집 현황</h2>
+  <dl class="stats">
+    <div class="stat"><dt>전체 기사</dt><dd id="s-total">-<small>건</small></dd></div>
+    <div class="stat"><dt id="l-org">기관</dt><dd id="s-org">-<small>건</small></dd></div>
+    <div class="stat"><dt id="l-site">사업지</dt><dd id="s-site">-<small>건</small></dd></div>
+    <div class="stat"><dt>최근 7일</dt><dd id="s-recent">-<small>건</small></dd></div>
+  </dl>
+
+  <section class="filters" aria-label="기사 필터">
+    <h2 class="sr-only">필터</h2>
+    <div class="filter-row">
+      <span class="filter-label" id="lb-kw">키워드</span>
+      <div class="chips" id="f-keyword" role="group" aria-labelledby="lb-kw"></div>
+    </div>
+    <div class="filter-row">
+      <span class="filter-label" id="lb-tp">주제</span>
+      <div class="chips" id="f-topic" role="group" aria-labelledby="lb-tp"></div>
+    </div>
+    <div class="filter-row">
+      <span class="filter-label" id="lb-pd">기간</span>
+      <div class="chips" id="f-period" role="group" aria-labelledby="lb-pd"></div>
+    </div>
+    <div class="filter-row">
+      <span class="filter-label">매체·정렬</span>
+      <div class="filter-tools">
+        <div class="select-wrap">
+          <label class="sr-only" for="f-source">매체 선택</label>
+          <select id="f-source"><option value="">전체 매체</option></select>
+        </div>
+        <div class="select-wrap">
+          <label class="sr-only" for="f-sort">정렬 기준</label>
+          <select id="f-sort">
+            <option value="new">최신순</option>
+            <option value="old">오래된순</option>
+            <option value="src">매체명순</option>
+          </select>
+        </div>
+        <button type="button" class="btn-reset" id="resetBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+            <path d="M4 12a8 8 0 1 1 2.3 5.7"/><path d="M4 20v-5h5"/>
+          </svg>
+          초기화
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div class="resultbar">
+    <p class="result-count" role="status" aria-live="polite">검색 결과 <b id="cnt">0</b>건</p>
+    <div class="active-tags" id="activeTags"></div>
+  </div>
+
+  <section class="cards" id="cards" aria-label="기사 목록"></section>
+
+  <div class="loadmore-wrap" id="moreWrap" hidden>
+    <button type="button" class="btn-more" id="moreBtn">기사 더 보기</button>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div>
+      <h2>뉴스 스크랩 대시보드</h2>
+      <ul>
+        <li>대상 키워드 · <span id="f-groups"></span></li>
+        <li>수집 채널 · 구글뉴스 RSS(한국어)</li>
+        <li>최종 갱신 · <span id="updated2"></span></li>
+      </ul>
+    </div>
+    <p class="note">
+      기사 제목·요약·링크는 각 언론사에 저작권이 있으며, 이 화면은 원문으로 이동하기 위한 색인만 제공합니다.
+      요약문은 각 기사 원문의 메타정보(og:description)에서 가져온 것으로, 언론사 편집 내용과 다를 수 있습니다.
+      내부 업무 참고용 화면입니다.
+    </p>
+  </div>
+</footer>
+
+<div class="modal-bg" id="modalBg" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+  <div class="modal" id="modal">
+    <div class="modal-head">
+      <div class="modal-head-meta" id="modalBadges"></div>
+      <button type="button" class="modal-close" id="modalClose" aria-label="닫기">✕</button>
+    </div>
+    <div class="modal-body">
+      <h2 id="modalTitle"></h2>
+      <dl class="modal-meta">
+        <div><dt>매체</dt><dd id="modalSource"></dd></div>
+        <div><dt>보도일</dt><dd id="modalDate"></dd></div>
+        <div><dt>주제</dt><dd id="modalTopic"></dd></div>
+      </dl>
+      <p class="modal-summary" id="modalSummary"></p>
+      <div class="modal-actions">
+        <a class="btn btn-primary" id="modalLink" href="#" target="_blank" rel="noopener noreferrer">
+          원문 보기
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/>
+          </svg>
+        </a>
+        <button type="button" class="btn btn-ghost" id="copyBtn">링크 복사</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

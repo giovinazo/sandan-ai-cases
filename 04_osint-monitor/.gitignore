@@ -1,0 +1,7 @@
+# 공통 제외(각 도구 폴더에 세부 .gitignore 가 따로 있다)
+.DS_Store
+._*
+.vercel/
+.env*
+__pycache__/
+*.pyc

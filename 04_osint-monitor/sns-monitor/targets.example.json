@@ -1,0 +1,20 @@
+{
+  "_note": "SNS 모아보기 예시 대상. targets.json 으로 복사해 고친다(targets.json 은 깃 제외). 로그인 없이 열람 가능한 공식 계정의 공개 피드만 적는다. 아래 주소는 모두 자리표시(example.com)다.",
+  "site": {
+    "title": "정책·현안 SNS 모아보기",
+    "eyebrow": "OO 산업단지 관련 공개글",
+    "hub_url": "../hub/",
+    "hub_name": "OO 산업단지 OSINT"
+  },
+  "accounts": [
+    {"name": "가상시청", "role": "기초자치단체", "platform": "rss",
+     "feed": "https://example.com/city/rss.xml", "url": "https://example.com/city"},
+    {"name": "가상도청", "role": "광역자치단체", "platform": "blog",
+     "feed": "https://example.com/province/blog/rss", "url": "https://example.com/province/blog"},
+    {"name": "가상부", "role": "중앙행정기관", "platform": "youtube",
+     "feed": "https://www.youtube.com/feeds/videos.xml?channel_id=<채널ID>", "url": "https://www.youtube.com/@<채널>"},
+    {"name": "OO기관", "role": "공공기관", "platform": "custom",
+     "module": "sources.example_source", "url": "https://example.com/agency",
+     "_note": "공식 API 등 약관이 허용하는 방식으로 각자 구현(sources/example_source.py)"}
+  ]
+}

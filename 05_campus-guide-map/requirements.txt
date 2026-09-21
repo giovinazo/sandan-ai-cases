@@ -1,0 +1,10 @@
+# 안내 지도 빌드(build_site.py · make_sample_data.py)는 표준 라이브러리만 쓴다.
+# 배포 폴더 아이콘 생성(build_deploy.py)
+Pillow>=10
+# 도면 지리참조 시연(georef_demo.py)
+pdfplumber>=0.11
+PyMuPDF>=1.24
+numpy>=1.26
+shapely>=2.0
+# 선택: 헤드리스 브라우저 점검(smoke_test.py). 설치 뒤 python3 -m playwright install chromium
+# playwright>=1.45

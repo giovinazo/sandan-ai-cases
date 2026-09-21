@@ -1,0 +1,12 @@
+# 배포에는 화면(index.html·assets/·data/·robots.txt)만 올린다
+/build.py
+/config.json
+/config.example.json
+/.cache
+/sample_data
+/logs
+/run_daily.sh
+/requirements.txt
+/README.md
+__pycache__/
+*.pyc

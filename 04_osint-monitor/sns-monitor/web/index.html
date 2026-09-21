@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>정책·현안 SNS 모아보기</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;700&display=swap" rel="stylesheet" onerror="this.remove()">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="wordmark"><a id="hubLink" href="../hub/">◂ OSINT 허브</a></div>
+  <div class="nav-meta">SNS 소식 · <span class="on" id="upd">—</span></div>
+</nav>
+
+<main>
+  <div class="eyebrow" id="eyebrow">관심 사업 관련 공개글</div>
+  <h1 id="siteTitle">정책·현안 SNS 모아보기</h1>
+
+  <div class="stats">
+    <div class="stat"><div class="v" id="s-total">0</div><div class="l">수집 게시물</div></div>
+    <div class="stat"><div class="v" id="s-hit">0</div><div class="l">키워드 감지</div></div>
+    <div class="stat"><div class="v" id="s-acc">0</div><div class="l">공식 계정</div></div>
+  </div>
+
+  <div class="filters">
+    <div class="filter-row">
+      <span class="lbl">플랫폼</span>
+      <div id="f-platform"></div>
+    </div>
+    <div class="filter-row">
+      <span class="lbl">인물</span>
+      <div id="f-person"></div>
+    </div>
+    <div class="filter-row">
+      <span class="lbl">키워드</span>
+      <div id="f-group"></div>
+    </div>
+    <div class="filter-row">
+      <span class="lbl">보기</span>
+      <button class="pill" id="f-onlyhit" data-on="0">감지만</button>
+      <div class="search"><input id="q" type="search" placeholder="본문 검색…" autocomplete="off"></div>
+    </div>
+  </div>
+
+  <div class="count-line" id="countline">—</div>
+  <div class="feed" id="feed"></div>
+</main>
+
+<footer>
+  <div>정책·현안 SNS 모아보기</div>
+  <div>공식 계정 공개 게시물만 · 원문 링크 제공 · <a id="hubLink2" href="../hub/">허브로</a></div>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+# 예시 파이프라인(GDAL 없이): 이 두 가지면 됩니다
+numpy>=1.24
+Pillow>=10.0
+# 실제 대용량 성과품(GDAL 경로)은 GDAL 을 따로 설치합니다(pip 가 아니라 brew·OSGeo4W·conda 권장)
+#   맥: brew install gdal   /  윈도우: OSGeo4W 또는 conda install -c conda-forge gdal

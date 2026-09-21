@@ -1,0 +1,8 @@
+# 매일 자동 실행 예시(cron). `crontab -e` 로 열어 붙여 넣고 경로를 고친다.
+# 각 run 스크립트에 "오늘 이미 끝났으면 즉시 종료" 가드가 있어 자주 깨워도 하루 한 번만 돈다.
+# PC가 꺼져 있던 날도 켜진 뒤 첫 깨움에 돌도록 30분 간격으로 깨운다.
+#
+# 분 시 일 월 요일  명령
+*/30 7-22 * * *  PORTAL_DIR=$HOME/osint/portal-monitor PY=/usr/bin/python3 /bin/zsh $HOME/osint/portal-monitor/run_daily.sh
+*/30 7-22 * * *  NEWS_DIR=$HOME/osint/newsboard PY=/usr/bin/python3 /bin/zsh $HOME/osint/newsboard/run_daily.sh
+0 9 * * *        SNS_DIR=$HOME/osint/sns-monitor PY=/usr/bin/python3 /bin/zsh $HOME/osint/sns-monitor/run.sh

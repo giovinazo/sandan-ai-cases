@@ -1,0 +1,10 @@
+# 필수
+pdfplumber>=0.11
+PyMuPDF>=1.24
+openpyxl>=3.1
+# 선택: HTML 글꼴 서브셋 임베드(html_dashboard/fonts/에 woff2를 넣은 경우)
+fonttools>=4.40
+brotli>=1.0
+# 선택(macOS 전용): 스캔 공문 OCR
+# pyobjc-framework-Vision
+# pyobjc-framework-Quartz

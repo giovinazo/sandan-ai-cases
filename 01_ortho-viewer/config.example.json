@@ -1,0 +1,35 @@
+{
+  "_설명": "자기 사업 자료용 설정 예시. config.json 으로 복사해 고칩니다(config.json 은 저장소에 올리지 않음). 상대경로는 이 파일이 있는 폴더 기준입니다.",
+  "title": "○○ 사업지구 현황지도",
+  "subtitle": "평면 · 항공영상 · 등고선 · 현황 지형지물 · 지적 · 측정",
+  "footer": "업무 참고용 · 20○○년 무인항공촬영 성과품",
+
+  "crs": {"epsg": 5186, "lat0": 38.0, "lon0": 127.0, "k0": 1.0, "fe": 200000.0, "fn": 600000.0},
+
+  "source": {
+    "ortho":  "원자료/정사영상_mosaic.tif",
+    "dsm":    "원자료/수치표면모델_dsm.tif",
+    "ground": "원자료/지반고_0.5m.tif",
+    "dxf_dir": "원자료/수치지형도_dxf",
+    "nodata": -10000
+  },
+  "_crop_box_설명": "자를 범위 [E최소, N최소, E최대, N최대] (crs 좌표, m). null 이면 원본 전체. 입체지도는 값이 꼭 필요합니다",
+  "crop_box": null,
+
+  "ortho_zoom": [14, 22],
+  "hs_zoom": [14, 20],
+  "hs_z_factor": 4,
+  "grid_res_m": 2.3873,
+
+  "data_dir": "vectors",
+  "output_dir": "output/지도",
+  "work_dir": "output/work",
+
+  "view_3d": {"tex_zoom": 19, "step": 8, "max_side": 6144, "jpeg_quality": 82},
+
+  "labels": {
+    "surface_note": "표면 = DSM(나무·건물 지붕 포함)",
+    "ground_note": "지반 = 점군의 지면 점으로 만든 땅 표면",
+    "cadastral_note": "필지 모양·지번·지목은 지적도 기준, 소유·편입 구분은 토지조서 기준(기준일 다를 수 있음)"
+  }
+}

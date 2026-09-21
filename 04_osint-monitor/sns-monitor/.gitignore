@@ -1,0 +1,28 @@
+# 자기 설정(실제 대상 계정·키워드)
+targets.json
+keywords.json
+# 사용자 구현 수집원 중 개인 것(틀 example_source.py 는 공개)
+sources/*
+!sources/__init__.py
+!sources/example_source.py
+# 로그인 상태는 어떤 경우에도 올리지 않는다
+.chrome-profile/
+*storage_state*.json
+*cookies*
+*.session
+# 수집 결과·생성 산출물
+data/
+backup/
+logs/
+web/data.js
+web/data/
+web/thumbs/
+# 기타
+.vercel/
+.env*
+web/.vercel/
+web/.env*
+__pycache__/
+*.pyc
+.DS_Store
+._*

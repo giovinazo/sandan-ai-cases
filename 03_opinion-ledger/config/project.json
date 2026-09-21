@@ -1,0 +1,134 @@
+{
+ "_설명": "사업 고유 값은 모두 이 파일에 둔다. 코드에는 기관명·부서명·문서번호·쪽 번호를 적지 않는다. 경로는 이 폴더(03_opinion-ledger) 기준 상대경로.",
+
+ "project": {
+  "name": "예시 산업단지",
+  "screen_title": "관계기관 협의의견",
+  "eyebrow": "산업단지계획 승인 관계기관 협의",
+  "edition": "3판",
+  "base_date": "2026.03.02",
+  "period_start": "2025.11.03",
+  "source_title": "예시 산업단지계획 관계기관 협의의견 및 조치계획(3판)",
+  "evidence_label": "승인권자 송부 회신 원문"
+ },
+
+ "paths": {
+  "source_pdf": "sample/input/예시_협의의견_조치계획_3판.pdf",
+  "major_pdf": null,
+  "rehyeobui_pdf": null,
+  "evidence_dir": "sample/input/회신공문",
+  "evidence_pdf_conv_dir": null,
+  "evidence_map": "config/evidence_map.json",
+  "annotations": "config/annotations.json",
+  "work_dir": "output/work",
+  "out_dir": "output"
+ },
+
+ "output_names": {
+  "ledger": "협의의견관리대장.xlsx",
+  "html": "협의의견_대시보드.html",
+  "verify_report": "검증리포트.md",
+  "match_xlsx": "협의의견_원문대조표.xlsx",
+  "extract": "무상귀속_협의의견_추출.xlsx"
+ },
+
+ "parser": {
+  "_설명": "한컴 PDF 표 판독 상수. 새 판을 받으면 쪽 크기와 모아찍기 여부부터 확인한다.",
+  "two_up_min_width": 1000.0,
+  "hline_min_len": 30.0,
+  "hline_merge_gap": 2.0,
+  "hline_ytol": 1.0,
+  "vline_min_len": 10.0,
+  "vline_merge_gap": 3.0,
+  "vline_xtol": 1.0,
+  "col_min_height_frac": 0.3,
+  "summary_col_min_height_frac": 0.05,
+  "char_line_bucket": 8.0,
+  "space_gap": 1.6
+ },
+
+ "groups": [
+  {"name": "중앙",     "role": "central",  "pages": [2, 2]},
+  {"name": "마바도",   "role": "province", "pages": [3, 4]},
+  {"name": "가나시",   "role": "city",     "pages": [5, 6]},
+  {"name": "유관기관", "role": "agency",   "pages": [7, 7]}
+ ],
+
+ "summary": {
+  "_설명": "총괄표(검증 기준값) 판독 규칙. pages는 논리쪽 번호(모아찍기면 반으로 가른 뒤의 번호).",
+  "pages": [1],
+  "group_alias": {"중앙부처": "중앙", "유관": "유관기관"},
+  "org_abbr": {"가나부": "가나부", "다라청": "다라청"},
+  "row_rules": [],
+  "rehyeobui_expected": {"계": 2, "반영": 2, "의견없음": 0}
+ },
+
+ "names": {
+  "_설명": "기관·부서 명칭 정규화 표. role별로 부서칸을 읽는 방식이 다르다(README 참고).",
+  "dept_alias": {},
+  "org_alias": {},
+  "org_fix": {},
+  "province_default_org": "마바도",
+  "province_sub_org_keywords": {"수자원": "마바도수자원본부"},
+  "province_parent_orgs": ["마바도", "마바도수자원본부"],
+  "city_org": "가나시",
+  "city_prefix_orgs": ["가나경찰서"],
+  "agency_split_regex": "^(.+?(?:공사|공단))(.*)$",
+  "rehyeobui_default_org": "가나부"
+ },
+
+ "classify": {
+  "none_words": ["의견없음", "해당없음", "해당사항없음", "저촉사항없음", "저촉없음", "해당사항이없음"]
+ },
+
+ "issues": {
+  "_설명": "쟁점유형 자동 태깅. 위에서부터 먼저 맞는 유형 하나를 준다. replace_before_tagging은 긴 낱말 안의 짧은 키워드 오탐 방지용(매장문화재의 화재).",
+  "replace_before_tagging": {"문화재": "문화유산"},
+  "types": [
+   ["통신", ["통신", "광케이블", "통신관로", "초고속인터넷"]],
+   ["상하수도", ["상수도", "하수", "오수", "급수", "지하수", "정수", "배수", "원인자부담", "폐수", "용수공급"]],
+   ["전력·에너지", ["전력", "송전", "변전", "에너지", "신재생", "열공급", "충전", "태양광", "수소", "도시가스"]],
+   ["재난·안전", ["재난", "재해", "방재", "소방", "화재", "지진", "저류지", "홍수", "사면", "침수"]],
+   ["문화재", ["문화유산", "발굴", "지표조사", "표본조사", "매장유산", "국가유산"]],
+   ["하천·수자원", ["하천", "제방", "수자원", "호안", "유수지", "저수지"]],
+   ["농림·산지", ["농지", "산지", "산림", "녹지", "임야", "농업"]],
+   ["환경", ["환경영향", "대기", "폐기물", "소음", "악취", "수질", "생태", "비산먼지"]],
+   ["산업입지·입주", ["입주", "업종배치", "산업시설용지", "지원시설", "분양", "지정계획"]],
+   ["토지·도시계획", ["토지이용", "지구단위", "용도지역", "도시계획", "편입", "보상", "무상귀속", "도유지", "공유재산", "국유재산"]],
+   ["건축", ["건축", "건폐율", "용적률"]],
+   ["도로·교통", ["도로", "교차로", "차로", "교통", "보행", "버스", "주차장", "신호", "택시"]],
+   ["교육·복지", ["학교", "교육", "복지", "보건", "어린이"]]
+  ]
+ },
+
+ "extract": {
+  "_설명": "파생 추출(예: 무상귀속 관련 건). 키워드는 공백을 걷어낸 본문에서 찾는다. pinned는 사람이 확정한 건을 연번+지문으로 잠근다.",
+  "title": "무상귀속(국공유지) 관련 협의의견",
+  "keywords": ["무상귀속", "유무상귀속", "국유지", "공유지", "도유지", "시유지", "국유재산", "공유재산", "기부채납", "관리전환"],
+  "dept_keywords_for_noreply": ["재산관리", "자산관리"],
+  "pinned": []
+ },
+
+ "sample_layout": {
+  "_설명": "예시 PDF 생성기(sample/make_sample_pdf.py) 전용. 한컴 PDF를 흉내 낸 쪽·열 경계 좌표(pt).",
+  "page_width": 595.3,
+  "page_height": 841.9,
+  "two_up": true,
+  "margin_top": 70,
+  "margin_bottom": 60,
+  "font_size": 8.5,
+  "summary_font_size": 7.5,
+  "line_height": 12.0,
+  "cell_pad_y": 3.0,
+  "cell_pad_x": 3.0,
+  "dept_chunk": 3,
+  "dash_len": 1.2,
+  "dash_gap": 1.0,
+  "cols_4": [40, 95, 330, 505, 555],
+  "cols_city": [40, 95, 150, 345, 505, 555],
+  "cols_summary": [40, 85, 150, 250, 285, 320, 360, 400, 440, 480, 555],
+  "headers_4": ["관계기관", "협의의견", "조치계획", "반영여부"],
+  "headers_city": ["관련부서", "근거법령", "검토의견", "조치계획", "반영여부"],
+  "headers_summary": ["구분", "관계기관", "협의부서", "계", "반영", "부분반영", "미반영", "의견없음", "미회신", "비고"]
+ }
+}

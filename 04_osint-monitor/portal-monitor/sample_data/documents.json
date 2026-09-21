@@ -1,0 +1,584 @@
+{
+ "_comment": "가상 예시자료. 기관·문서·담당자는 모두 지어낸 것이며 실제 포털 문서가 아니다.",
+ "generated_at": "2026-09-21T07:00:00+09:00",
+ "mode": "예시",
+ "site": {
+  "title": "정보공개포털 모니터링",
+  "subtitle": "OO 산업단지 공개정보 모니터링"
+ },
+ "range": {
+  "start": "20260807",
+  "end": "20260921"
+ },
+ "full_start": "20240101",
+ "keywords": [
+  "OO 일반산업단지",
+  "OO산단",
+  "OO 산업단지 인허가",
+  "OO 산업단지 실시계획",
+  "OO면 OO리",
+  "OO리 국유재산",
+  "OO 산업단지 보상"
+ ],
+ "query_stats": [],
+ "counts": {
+  "infolist": 22,
+  "orginl": 4
+ },
+ "added": {
+  "infolist": 0,
+  "orginl": 0
+ },
+ "items": {
+  "infolist": [
+   {
+    "id": "SAMPLE-IN-0001",
+    "title": "OO 일반산업단지 실시계획 승인 신청 검토 보고",
+    "instt": "가상도 가상시",
+    "instt_se": "B",
+    "instt_se_nm": "기초자치단체",
+    "dept": "가상도 가상시 도시경제국 산업정책과",
+    "doc_no": "산업정책과-1000",
+    "charger": "홍길동",
+    "unit_job": "산업단지계획관리",
+    "date": "2026-09-28",
+    "datetime": "20260928100000",
+    "othbc": "공개",
+    "file_nm": "",
+    "has_orginl": false,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO 산업단지 실시계획"
+    ],
+    "grade": "core"
+   },
+   {
+    "id": "SAMPLE-IN-0002",
+    "title": "OO 일반산업단지 인허가 관계기관 협의 요청",
+    "instt": "가상도",
+    "instt_se": "W",
+    "instt_se_nm": "광역자치단체",
+    "dept": "가상도 경제실 산업입지과",
+    "doc_no": "산업입지과-1037",
+    "charger": "김가상",
+    "unit_job": "산업단지인허가",
+    "date": "2026-09-25",
+    "datetime": "20260925110700",
+    "othbc": "부분공개",
+    "file_nm": "",
+    "has_orginl": false,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO 산업단지 인허가"
+    ],
+    "grade": "core"
+   },
+   {
+    "id": "SAMPLE-IN-0003",
+    "title": "OO산단 진입도로 개설 관련 회의 결과 알림",
+    "instt": "가상개발공사",
+    "instt_se": "P",
+    "instt_se_nm": "공공기관",
+    "dept": "가상개발공사 산업단지사업처",
+    "doc_no": "산업단지사업처-1074",
+    "charger": "이예시",
+    "unit_job": "기반시설관리",
+    "date": "2026-09-22",
+    "datetime": "20260922121400",
+    "othbc": "비공개",
+    "file_nm": "",
+    "has_orginl": false,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO산단"
+    ],
+    "grade": "core"
+   },
+   {
+    "id": "SAMPLE-IN-0004",
+    "title": "OO 산업단지 환경영향평가 초안 주민설명회 개최 계획",
+    "instt": "가상부",
+    "instt_se": "C",
+    "instt_se_nm": "중앙행정기관",
+    "dept": "가상부 산업입지정책과",
+    "doc_no": "산업입지정책과-1111",
+    "charger": "박표본",
+    "unit_job": "환경영향평가",
+    "date": "2026-09-19",
+    "datetime": "20260919132100",
+    "othbc": "공개",
+    "file_nm": "",
+    "has_orginl": false,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO 일반산업단지"
+    ],
+    "grade": "core"
+   },
+   {
+    "id": "SAMPLE-IN-0005",
+    "title": "OO리 국유재산 무상귀속 협의",
+    "instt": "가상도 가상시",
+    "instt_se": "B",
+    "instt_se_nm": "기초자치단체",
+    "dept": "가상도 가상시 주거환경국 토지정보과",
+    "doc_no": "토지정보과-1148",
+    "charger": "최샘플",
+    "unit_job": "국유재산관리",
+    "date": "2026-09-16",
+    "datetime": "20260916142800",
+    "othbc": "부분공개",
+    "file_nm": "",
+    "has_orginl": false,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO리 국유재산"
+    ],
+    "grade": "land"
+   },
+   {
+    "id": "SAMPLE-IN-0006",
+    "title": "OO면 OO리 일원 토지 분할 측량 결과 통보",
+    "instt": "가상도 가상시",
+    "instt_se": "B",
+    "instt_se_nm": "기초자치단체",
+    "dept": "가상도 가상시 도시경제국 산업정책과",
+    "doc_no": "산업정책과-1185",
+    "charger": "정연습",
+    "unit_job": "지적측량관리",
+    "date": "2026-09-13",
+    "datetime": "20260913153500",
+    "othbc": "비공개",
+    "file_nm": "",
+    "has_orginl": false,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO면 OO리"
+    ],
+    "grade": "land"
+   },
+   {
+    "id": "SAMPLE-IN-0010",
+    "title": "OO 일반산업단지 용수공급 계획 의견 회신",
+    "instt": "가상도 가상시",
+    "instt_se": "B",
+    "instt_se_nm": "기초자치단체",
+    "dept": "가상도 가상시 주거환경국 토지정보과",
+    "doc_no": "토지정보과-1333",
+    "charger": "박표본",
+    "unit_job": "용수공급",
+    "date": "2026-08-28",
+    "datetime": "20260828110300",
+    "othbc": "공개",
+    "file_nm": "",
+    "has_orginl": false,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO 일반산업단지"
+    ],
+    "grade": "core"
+   },
+   {
+    "id": "SAMPLE-IN-0011",
+    "title": "OO산단 폐수처리시설 설치 계획 검토",
+    "instt": "가상도 가상시",
+    "instt_se": "B",
+    "instt_se_nm": "기초자치단체",
+    "dept": "가상도 가상시 도시경제국 산업정책과",
+    "doc_no": "산업정책과-1370",
+    "charger": "최샘플",
+    "unit_job": "환경관리",
+    "date": "2026-08-25",
+    "datetime": "20260825121000",
+    "othbc": "부분공개",
+    "file_nm": "",
+    "has_orginl": false,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO산단"
+    ],
+    "grade": "core"
+   },
+   {
+    "id": "SAMPLE-IN-0012",
+    "title": "OO 산업단지 지구단위계획 변경 자문 결과",
+    "instt": "가상도",
+    "instt_se": "W",
+    "instt_se_nm": "광역자치단체",
+    "dept": "가상도 경제실 산업입지과",
+    "doc_no": "산업입지과-1407",
+    "charger": "정연습",
+    "unit_job": "도시계획",
+    "date": "2026-08-22",
+    "datetime": "20260822131700",
+    "othbc": "비공개",
+    "file_nm": "",
+    "has_orginl": false,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO 산업단지 실시계획"
+    ],
+    "grade": "core"
+   },
+   {
+    "id": "SAMPLE-IN-0007",
+    "title": "OO 산업단지 편입토지 보상계획 공고 요청",
+    "instt": "가상도",
+    "instt_se": "W",
+    "instt_se_nm": "광역자치단체",
+    "dept": "가상도 경제실 산업입지과",
+    "doc_no": "산업입지과-1222",
+    "charger": "홍길동",
+    "unit_job": "토지보상",
+    "date": "2026-08-10",
+    "datetime": "20260810164200",
+    "othbc": "공개",
+    "file_nm": "",
+    "has_orginl": false,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO 산업단지 보상"
+    ],
+    "grade": "land"
+   },
+   {
+    "id": "SAMPLE-IN-0008",
+    "title": "OO면 OO리 개발행위허가 민원 처리 알림",
+    "instt": "가상개발공사",
+    "instt_se": "P",
+    "instt_se_nm": "공공기관",
+    "dept": "가상개발공사 산업단지사업처",
+    "doc_no": "산업단지사업처-1259",
+    "charger": "김가상",
+    "unit_job": "개발행위허가",
+    "date": "2026-08-07",
+    "datetime": "20260807174900",
+    "othbc": "부분공개",
+    "file_nm": "",
+    "has_orginl": false,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO면 OO리"
+    ],
+    "grade": "land"
+   },
+   {
+    "id": "SAMPLE-IN-0009",
+    "title": "입주기업 간담회 자료 제출(가상시 사례)",
+    "instt": "가상부",
+    "instt_se": "C",
+    "instt_se_nm": "중앙행정기관",
+    "dept": "가상부 산업입지정책과",
+    "doc_no": "산업입지정책과-1296",
+    "charger": "이예시",
+    "unit_job": "기업지원",
+    "date": "2026-08-04",
+    "datetime": "20260804105600",
+    "othbc": "비공개",
+    "file_nm": "",
+    "has_orginl": false,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO 일반산업단지"
+    ],
+    "grade": "related"
+   },
+   {
+    "id": "SAMPLE-IN-0013",
+    "title": "OO리 농지전용 협의 결과 통보",
+    "instt": "가상개발공사",
+    "instt_se": "P",
+    "instt_se_nm": "공공기관",
+    "dept": "가상개발공사 산업단지사업처",
+    "doc_no": "산업단지사업처-1444",
+    "charger": "홍길동",
+    "unit_job": "농지관리",
+    "date": "2026-07-19",
+    "datetime": "20260719142400",
+    "othbc": "공개",
+    "file_nm": "",
+    "has_orginl": false,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO면 OO리"
+    ],
+    "grade": "land"
+   },
+   {
+    "id": "SAMPLE-IN-0014",
+    "title": "OO 산업단지 인허가 추진상황 점검 회의",
+    "instt": "가상부",
+    "instt_se": "C",
+    "instt_se_nm": "중앙행정기관",
+    "dept": "가상부 산업입지정책과",
+    "doc_no": "산업입지정책과-1481",
+    "charger": "김가상",
+    "unit_job": "산업단지인허가",
+    "date": "2026-07-16",
+    "datetime": "20260716153100",
+    "othbc": "부분공개",
+    "file_nm": "",
+    "has_orginl": false,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO 산업단지 인허가"
+    ],
+    "grade": "core"
+   },
+   {
+    "id": "SAMPLE-IN-0015",
+    "title": "OO 산업단지 교통영향평가 심의 요청",
+    "instt": "가상도 가상시",
+    "instt_se": "B",
+    "instt_se_nm": "기초자치단체",
+    "dept": "가상도 가상시 주거환경국 토지정보과",
+    "doc_no": "토지정보과-1518",
+    "charger": "이예시",
+    "unit_job": "교통영향평가",
+    "date": "2026-07-13",
+    "datetime": "20260713163800",
+    "othbc": "비공개",
+    "file_nm": "",
+    "has_orginl": false,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO 일반산업단지"
+    ],
+    "grade": "core"
+   },
+   {
+    "id": "SAMPLE-IN-0016",
+    "title": "OO면 OO리 도로점용 허가 사항 변경",
+    "instt": "가상도 가상시",
+    "instt_se": "B",
+    "instt_se_nm": "기초자치단체",
+    "dept": "가상도 가상시 도시경제국 산업정책과",
+    "doc_no": "산업정책과-1555",
+    "charger": "박표본",
+    "unit_job": "도로관리",
+    "date": "2026-07-10",
+    "datetime": "20260710174500",
+    "othbc": "공개",
+    "file_nm": "",
+    "has_orginl": false,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO면 OO리"
+    ],
+    "grade": "land"
+   },
+   {
+    "id": "SAMPLE-IN-0017",
+    "title": "OO 일반산업단지 분양 수요조사 결과 보고",
+    "instt": "가상도",
+    "instt_se": "W",
+    "instt_se_nm": "광역자치단체",
+    "dept": "가상도 경제실 산업입지과",
+    "doc_no": "산업입지과-1592",
+    "charger": "최샘플",
+    "unit_job": "산업단지분양",
+    "date": "2026-07-07",
+    "datetime": "20260707105200",
+    "othbc": "부분공개",
+    "file_nm": "",
+    "has_orginl": false,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO 일반산업단지"
+    ],
+    "grade": "core"
+   },
+   {
+    "id": "SAMPLE-IN-0018",
+    "title": "OO 산업단지 문화재 지표조사 협의",
+    "instt": "가상개발공사",
+    "instt_se": "P",
+    "instt_se_nm": "공공기관",
+    "dept": "가상개발공사 산업단지사업처",
+    "doc_no": "산업단지사업처-1629",
+    "charger": "정연습",
+    "unit_job": "문화재관리",
+    "date": "2026-07-04",
+    "datetime": "20260704115900",
+    "othbc": "비공개",
+    "file_nm": "",
+    "has_orginl": false,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO 산업단지 인허가"
+    ],
+    "grade": "core"
+   },
+   {
+    "id": "SAMPLE-IN-0019",
+    "title": "OO리 국유재산 대부계약 해지 통보",
+    "instt": "가상부",
+    "instt_se": "C",
+    "instt_se_nm": "중앙행정기관",
+    "dept": "가상부 산업입지정책과",
+    "doc_no": "산업입지정책과-1666",
+    "charger": "홍길동",
+    "unit_job": "국유재산관리",
+    "date": "2026-06-28",
+    "datetime": "20260628120600",
+    "othbc": "공개",
+    "file_nm": "",
+    "has_orginl": false,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO리 국유재산"
+    ],
+    "grade": "land"
+   },
+   {
+    "id": "SAMPLE-IN-0020",
+    "title": "OO산단 전력공급 계통 검토 의견",
+    "instt": "가상도 가상시",
+    "instt_se": "B",
+    "instt_se_nm": "기초자치단체",
+    "dept": "가상도 가상시 주거환경국 토지정보과",
+    "doc_no": "토지정보과-1703",
+    "charger": "김가상",
+    "unit_job": "기반시설관리",
+    "date": "2026-06-25",
+    "datetime": "20260625131300",
+    "othbc": "부분공개",
+    "file_nm": "",
+    "has_orginl": false,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO산단"
+    ],
+    "grade": "core"
+   },
+   {
+    "id": "SAMPLE-IN-0021",
+    "title": "지역 투자유치 정책 동향 보고",
+    "instt": "가상도 가상시",
+    "instt_se": "B",
+    "instt_se_nm": "기초자치단체",
+    "dept": "가상도 가상시 도시경제국 산업정책과",
+    "doc_no": "산업정책과-1740",
+    "charger": "이예시",
+    "unit_job": "정책동향",
+    "date": "2026-06-22",
+    "datetime": "20260622142000",
+    "othbc": "비공개",
+    "file_nm": "",
+    "has_orginl": false,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO 일반산업단지"
+    ],
+    "grade": "related"
+   },
+   {
+    "id": "SAMPLE-IN-0022",
+    "title": "OO 산업단지 보상협의회 구성 계획",
+    "instt": "가상도",
+    "instt_se": "W",
+    "instt_se_nm": "광역자치단체",
+    "dept": "가상도 경제실 산업입지과",
+    "doc_no": "산업입지과-1777",
+    "charger": "박표본",
+    "unit_job": "토지보상",
+    "date": "2026-06-19",
+    "datetime": "20260619152700",
+    "othbc": "공개",
+    "file_nm": "",
+    "has_orginl": false,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO 산업단지 보상"
+    ],
+    "grade": "land"
+   }
+  ],
+  "orginl": [
+   {
+    "id": "SAMPLE-OR-0001",
+    "title": "OO 일반산업단지 실시계획 승인 신청 검토 보고",
+    "instt": "가상도 가상시",
+    "instt_se": "B",
+    "instt_se_nm": "기초자치단체",
+    "dept": "가상도 가상시 도시경제국 산업정책과",
+    "doc_no": "산업정책과-1000",
+    "charger": "홍길동",
+    "unit_job": "산업단지계획관리",
+    "date": "2026-09-28",
+    "datetime": "20260928100000",
+    "othbc": "공개",
+    "file_nm": "붙임_검토자료(가상).pdf",
+    "has_orginl": true,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO 산업단지 실시계획"
+    ],
+    "grade": "core"
+   },
+   {
+    "id": "SAMPLE-OR-0002",
+    "title": "OO리 국유재산 무상귀속 협의",
+    "instt": "가상도",
+    "instt_se": "W",
+    "instt_se_nm": "광역자치단체",
+    "dept": "가상도 경제실 산업입지과",
+    "doc_no": "산업입지과-1037",
+    "charger": "김가상",
+    "unit_job": "국유재산관리",
+    "date": "2026-09-25",
+    "datetime": "20260925110700",
+    "othbc": "공개",
+    "file_nm": "붙임_검토자료(가상).pdf",
+    "has_orginl": true,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO리 국유재산"
+    ],
+    "grade": "land"
+   },
+   {
+    "id": "SAMPLE-OR-0003",
+    "title": "OO 일반산업단지 용수공급 계획 의견 회신",
+    "instt": "가상개발공사",
+    "instt_se": "P",
+    "instt_se_nm": "공공기관",
+    "dept": "가상개발공사 산업단지사업처",
+    "doc_no": "산업단지사업처-1074",
+    "charger": "이예시",
+    "unit_job": "용수공급",
+    "date": "2026-09-22",
+    "datetime": "20260922121400",
+    "othbc": "공개",
+    "file_nm": "붙임_검토자료(가상).pdf",
+    "has_orginl": true,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO 일반산업단지"
+    ],
+    "grade": "core"
+   },
+   {
+    "id": "SAMPLE-OR-0004",
+    "title": "OO 일반산업단지 분양 수요조사 결과 보고",
+    "instt": "가상부",
+    "instt_se": "C",
+    "instt_se_nm": "중앙행정기관",
+    "dept": "가상부 산업입지정책과",
+    "doc_no": "산업입지정책과-1111",
+    "charger": "박표본",
+    "unit_job": "산업단지분양",
+    "date": "2026-09-19",
+    "datetime": "20260919132100",
+    "othbc": "공개",
+    "file_nm": "붙임_검토자료(가상).pdf",
+    "has_orginl": true,
+    "url": "https://www.open.go.kr/",
+    "kwds": [
+     "OO 일반산업단지"
+    ],
+    "grade": "core"
+   }
+  ]
+ }
+}

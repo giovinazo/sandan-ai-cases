@@ -1,0 +1,16 @@
+# 자기 설정(실제 키워드·분류 규칙)
+config.json
+# 수집 결과·생성 산출물
+data/
+data.js
+status.json
+downloads/
+logs/
+.last_run
+# 기타
+.vercel/
+.env*
+__pycache__/
+*.pyc
+.DS_Store
+._*

@@ -1,0 +1,14 @@
+# 자기 설정(실제 검색어·그룹)
+config.json
+# 수집 결과·생성 산출물
+data/
+.cache/
+logs/
+.last_run
+# 기타
+.vercel/
+.env*
+__pycache__/
+*.pyc
+.DS_Store
+._*

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  맥 launchd 예시. ~/Library/LaunchAgents/ 에 복사하고 경로(/path/to/osint/...)를 자기 절대경로로 고친 뒤
+    launchctl load ~/Library/LaunchAgents/com.example.osint-portal.plist
+  로 등록한다. 뉴스·SNS 도 Label·경로만 바꿔 같은 틀로 만든다.
+
+  함정
+  - 경로에 한글이 있으면 실행에 실패하는 경우가 있다. 영문 경로에 두거나 영문 경로의 래퍼 스크립트를 거친다
+  - launchd 환경에는 로케일·PATH 가 거의 없다. LANG 을 명시하고 실행 파일은 절대경로로 쓴다
+  - macOS 보호로 클라우드 동기화 폴더를 못 여는 경우가 있다. 작업본은 홈 아래 일반 폴더에 둔다
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.example.osint-portal</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/zsh</string>
+    <string>/path/to/osint/portal-monitor/run_daily.sh</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PORTAL_DIR</key><string>/path/to/osint/portal-monitor</string>
+    <key>PY</key><string>/usr/bin/python3</string>
+    <key>LANG</key><string>ko_KR.UTF-8</string>
+    <key>LC_ALL</key><string>ko_KR.UTF-8</string>
+  </dict>
+  <!-- 로그인 직후 1회 + 15분마다 깨운다. 하루 1회 판정은 스크립트 가드가 한다 -->
+  <key>RunAtLoad</key><true/>
+  <key>StartInterval</key><integer>900</integer>
+  <key>StandardOutPath</key><string>/tmp/osint-portal.out</string>
+  <key>StandardErrorPath</key><string>/tmp/osint-portal.err</string>
+</dict>
+</plist>

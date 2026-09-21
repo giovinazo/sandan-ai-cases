@@ -1,0 +1,29 @@
+# 운영체제·편집기
+.DS_Store
+._*
+Thumbs.db
+.vscode/
+.idea/
+
+# 파이썬
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# 산출물·로그
+output/
+dist/
+logs/
+*.log
+
+# 비밀·개인 설정 (예시는 *.example.json 으로 둡니다)
+.env
+.env.*
+config.json
+!**/sample_data/**/config.json
+*.local.json
+storage_state*.json
+cookies*.json
+.vercel/
+.netlify/

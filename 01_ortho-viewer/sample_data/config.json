@@ -1,0 +1,27 @@
+{
+  "_설명": "가상 예시자료용 설정. 상대경로는 이 파일이 있는 폴더 기준입니다. 좌표·수치는 모두 가상입니다.",
+  "title": "가상 사업지구 현황지도",
+  "subtitle": "가상 예시자료 · 정사영상 · 음영기복 · 등고선 · 지적 · 측정",
+  "footer": "가상 예시자료(실제 사업지구 아님) · 업무 참고용 도구 시험",
+  "crs": {"epsg": 5186, "lat0": 38.0, "lon0": 127.0, "k0": 1.0, "fe": 200000.0, "fn": 600000.0},
+  "source": {
+    "ortho": "가상_정사영상.tif",
+    "dsm": "가상_DSM.tif",
+    "ground": "가상_지반.tif",
+    "nodata": -10000
+  },
+  "crop_box": [100000, 450000, 101000, 450800],
+  "ortho_zoom": [14, 19],
+  "hs_zoom": [14, 18],
+  "hs_z_factor": 4,
+  "grid_res_m": 2.3873,
+  "data_dir": "vectors",
+  "output_dir": "../output/sample/지도",
+  "work_dir": "../output/sample/work",
+  "view_3d": {"tex_zoom": 18, "step": 4, "max_side": 4096, "jpeg_quality": 82},
+  "labels": {
+    "surface_note": "표면 = 가상 DSM(나무·건물 높이 포함)",
+    "ground_note": "지반 = 가상 지반 표고",
+    "cadastral_note": "가상 필지 · 소유 구분은 난수로 만든 가상값"
+  }
+}

@@ -1,0 +1,4 @@
+# 생성 산출물(타일·화면·중간산출)은 저장소에 넣지 않습니다
+output/
+# 자기 사업 설정(실제 경로가 들어감). 예시는 config.example.json · sample_data/config.json
+/config.json

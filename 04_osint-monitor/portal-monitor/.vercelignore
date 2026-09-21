@@ -1,0 +1,16 @@
+# 배포에는 화면(index.html·data.js·status.json·robots.txt)만 올린다.
+# 앞 슬래시로 루트만 지정한다(하위 폴더의 같은 이름까지 빠지는 사고 방지).
+/collect.py
+/build_web.py
+/reclassify.py
+/portal_client.py
+/download_orginl.py
+/config.json
+/config.example.json
+/data
+/downloads
+/sample_data
+/logs
+/run_daily.sh
+/requirements.txt
+/README.md

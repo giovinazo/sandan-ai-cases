@@ -1,0 +1,60 @@
+{
+  "_comment": "정보공개포털 모니터링 예시 설정. config.json 으로 복사해 자기 사업에 맞게 고친다(config.json 은 깃 제외). 포털 검색은 '입력한 모든 단어를 제목에 포함(allword)' 방식이다. OO 는 사업지·지명 자리표시.",
+  "site": {
+    "title": "정보공개포털 모니터링",
+    "subtitle": "OO 산업단지 공개정보 모니터링"
+  },
+  "range": {
+    "full_start": "20240101",
+    "recent_days": 45
+  },
+  "request": {
+    "delay_sec": 1.3,
+    "rows_per_page": 50,
+    "max_pages_per_keyword": 40,
+    "timeout_sec": 40
+  },
+  "keywords": [
+    {"kwd": "OO 일반산업단지", "note": "사업 직결"},
+    {"kwd": "OO산단", "note": "사업 직결(약칭)"},
+    {"kwd": "OO 산업단지 인허가", "note": "사업 직결+절차"},
+    {"kwd": "OO 산업단지 실시계획", "note": "사업 직결+절차"},
+    {"kwd": "OO면 OO리", "note": "부지 소재지"},
+    {"kwd": "OO리 국유재산", "note": "부지 국유지"},
+    {"kwd": "OO 산업단지 보상", "note": "부지 보상"}
+  ],
+  "classify": {
+    "_comment": "규칙 하나는 '모든 단어가 제목(+단위업무)에 들어 있으면 해당'. 목록 중 하나라도 맞으면 그 갈래. 순서: hard_exclude -> exclude(guard 로 구제) -> land -> core -> related",
+    "land_rules": [
+      ["OO리"],
+      ["무상귀속"],
+      ["국유재산", "OO"],
+      ["보상", "산업단지"],
+      ["토지", "OO"]
+    ],
+    "core_rules": [
+      ["OO", "산업단지"],
+      ["OO산단"],
+      ["OO", "인허가"],
+      ["OO", "실시계획"]
+    ],
+    "exclude_rules": [
+      ["초등학교"],
+      ["중학교"],
+      ["고등학교"],
+      ["유치원"],
+      ["교육지원청"]
+    ],
+    "exclude_guard": [
+      "산업단지",
+      "산단",
+      "무상귀속",
+      "개발사업"
+    ],
+    "hard_exclude_rules": [
+      ["OO아파트"],
+      ["(주)OO산업"],
+      ["OO산업(주)"]
+    ]
+  }
+}

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>방음벽 폐쇄감 검토 모델</title>
+<!--
+  읽기 쉬운 소스판입니다. ES 모듈을 쓰므로 로컬 서버로 여십시오.
+    python3 -m http.server 8000   →   http://localhost:8000/
+  더블클릭으로 여는 단일 파일은 build_offline.py가 만듭니다(barrier-review-offline.html).
+  수치는 config.js에서 바꿉니다.
+-->
+<script src="config.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "three": "./lib/three/three.module.min.js",
+    "three/addons/controls/OrbitControls.js": "./lib/three/addons/controls/OrbitControls.js"
+  }
+}
+</script>
+<style>
+  :root { --ink:#1d1d1f; --muted:#86868b; --hair:#e0e0e0; --blue:#0066cc; --parch:#f5f5f7; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; height:100%; overflow:hidden; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; color: var(--ink); }
+  #stage { position:absolute; inset:0 340px 0 0; background:#dfe7ee; }
+  #stage canvas { display:block; }
+  #caption { position:absolute; top:16px; left:16px; z-index:5; pointer-events:none; }
+  #caption h1 { margin:0; font-size:17px; font-weight:600; letter-spacing:-0.2px; }
+  #caption p { margin:2px 0 0; font-size:12px; color:var(--muted); }
+  #compass { position:absolute; top:14px; right:14px; z-index:6; width:52px; height:52px; border-radius:50%;
+    background:rgba(245,245,247,0.8); backdrop-filter:blur(20px) saturate(180%); border:1px solid var(--hair);
+    display:flex; align-items:center; justify-content:center; }
+  #compassArrow { width:34px; height:34px; }
+  #bottombar { position:absolute; left:50%; bottom:14px; transform:translateX(-50%); z-index:6; max-width:92%;
+    background:rgba(245,245,247,0.8); backdrop-filter:blur(20px) saturate(180%); border:1px solid var(--hair);
+    border-radius:9999px; padding:9px 20px; font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  #bottombar b { font-weight:600; }
+  #bottombar .sep { color:var(--muted); margin:0 8px; }
+  #cmpOverlay { position:absolute; inset:0; z-index:4; display:none; pointer-events:none; }
+  #cmpOverlay .vline { position:absolute; left:50%; top:0; bottom:0; width:1px; background:rgba(255,255,255,0.9); }
+  #cmpOverlay .hline { position:absolute; top:50%; left:0; right:0; height:1px; background:rgba(255,255,255,0.9); }
+  #cmpOverlay .lbl { position:absolute; background:rgba(245,245,247,0.85); backdrop-filter:blur(12px);
+    border:1px solid var(--hair); border-radius:9999px; padding:5px 12px; font-size:12px; font-weight:600; }
+  #cmpOverlay .lbl span { font-weight:400; color:var(--muted); }
+  #panel { position:absolute; top:0; right:0; bottom:0; width:340px; background:var(--parch); border-left:1px solid var(--hair); overflow-y:auto; }
+  #panel .inner { padding:20px 20px 40px; }
+  #panel h2 { font-size:19px; font-weight:600; letter-spacing:-0.2px; margin:0; }
+  #panel .sub { font-size:12px; color:var(--muted); margin:3px 0 0; }
+  #panel section { border-top:1px solid var(--hair); margin-top:18px; padding-top:14px; }
+  #panel h3 { font-size:13px; font-weight:600; margin:0 0 10px; }
+  .btnrow { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+  .btnrow.four { grid-template-columns:repeat(4,1fr); }
+  button { font:inherit; cursor:pointer; }
+  .pill { border:1px solid var(--hair); background:#fff; color:var(--ink); border-radius:9999px; padding:6px 8px; font-size:12px; }
+  .pill:active { transform:scale(0.95); }
+  .pill.on { background:var(--blue); border-color:var(--blue); color:#fff; font-weight:600; }
+  .seg { display:flex; background:#e8e8ed; border-radius:9999px; padding:2px; gap:2px; }
+  .seg button { flex:1; border:0; background:transparent; border-radius:9999px; padding:5px 4px; font-size:12px; color:var(--ink); }
+  .seg button.on { background:#fff; font-weight:600; }
+  .card { background:#fff; border:1px solid var(--hair); border-radius:14px; padding:12px; margin-top:10px; }
+  .card .ttl { font-size:13px; font-weight:600; margin-bottom:8px; }
+  .row { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:8px; font-size:12px; }
+  select { font:inherit; font-size:12px; padding:4px 6px; border:1px solid var(--hair); border-radius:8px; background:#fff; max-width:170px; }
+  input[type=range] { width:100%; accent-color:var(--blue); }
+  input[type=checkbox] { accent-color:var(--blue); width:16px; height:16px; }
+  .est { font-size:11px; color:var(--muted); margin-top:8px; }
+  .fine { font-size:11px; color:var(--muted); line-height:1.5; margin-top:10px; }
+  table.floors { width:100%; border-collapse:collapse; font-size:11.5px; margin-top:6px; }
+  table.floors th, table.floors td { border-bottom:1px solid var(--hair); padding:4px 3px; text-align:center; }
+  table.floors th { font-weight:600; color:var(--muted); }
+  table.floors tr.open td { color:var(--blue); font-weight:600; }
+  table.floors tr.sel td { background:#eef4fb; }
+  table.floors tr { cursor:pointer; }
+  .linkbtn { background:none; border:0; color:var(--blue); font-size:13px; padding:0; }
+  .linkbtn:hover { text-decoration:underline; }
+  .primary { width:100%; border:0; background:var(--blue); color:#fff; border-radius:9999px; padding:9px; font-size:14px; font-weight:600; margin-top:4px; }
+  dialog { border:1px solid var(--hair); border-radius:18px; padding:0; max-width:600px; width:90%; max-height:80vh; }
+  dialog::backdrop { background:rgba(0,0,0,0.3); }
+  dialog .dwrap { padding:24px; overflow-y:auto; max-height:calc(80vh - 2px); }
+  dialog h3 { margin:0 0 6px; font-size:17px; font-weight:600; }
+  dialog h4 { margin:16px 0 6px; font-size:13px; font-weight:600; }
+  dialog ul { margin:0; padding-left:18px; font-size:13px; line-height:1.65; }
+  dialog .close { float:right; }
+  #err { display:none; position:absolute; inset:0; z-index:50; background:#fff; padding:40px; font-size:14px; line-height:1.7; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="caption"><h1>방음벽 폐쇄감 검토 모델</h1><p id="capSub"></p></div>
+  <div id="compass"><svg id="compassArrow" viewBox="0 0 40 40"><polygon points="20,5 26,25 20,21 14,25" fill="#0066cc"/><circle cx="20" cy="20" r="18" fill="none" stroke="#c6c6c9" stroke-width="1.5"/><text x="20" y="36" font-size="9" font-weight="600" text-anchor="middle" fill="#1d1d1f">N</text></svg></div>
+  <div id="cmpOverlay">
+    <div class="vline"></div><div class="hline"></div>
+    <div class="lbl" style="top:12px; left:12px" id="cl0"></div>
+    <div class="lbl" style="top:12px; left:calc(50% + 12px)" id="cl1"></div>
+    <div class="lbl" style="top:calc(50% + 12px); left:12px" id="cl2"></div>
+    <div class="lbl" style="top:calc(50% + 12px); left:calc(50% + 12px)" id="cl3"></div>
+  </div>
+  <div id="bottombar">불러오는 중…</div>
+</div>
+
+<div id="panel"><div class="inner">
+  <h2>방음벽 검토</h2>
+  <p class="sub">가상 예시 수치 · 지반 Z=0 평탄 · 대안 간 상대비교용</p>
+
+  <section>
+    <h3>시점</h3>
+    <div class="btnrow four" id="viewBtns">
+      <button class="pill" data-v="V1">V1 조감</button>
+      <button class="pill" data-v="V2">V2 보행자</button>
+      <button class="pill" data-v="V3">V3 소로</button>
+      <button class="pill" data-v="V4">V4 창</button>
+      <button class="pill" data-v="V6">V6 업무층</button>
+      <button class="pill" data-v="V7">V7 운전자</button>
+      <button class="pill" data-v="V8">V8 단면</button>
+    </div>
+    <div class="row"><label>V4 창 시점 층</label><select id="floorSel"></select></div>
+  </section>
+
+  <section>
+    <h3>방음벽 높이</h3>
+    <div class="seg" id="hSeg"></div>
+    <div class="row"><label>투명판 투과율</label><b id="transVal" style="font-size:12px"></b></div>
+    <input type="range" id="transSlider" min="0" max="90" step="5">
+  </section>
+
+  <section>
+    <h3>층별 창 시야 <span style="color:var(--muted); font-weight:400">(행을 누르면 창 시점)</span></h3>
+    <div id="floorTable"></div>
+    <p class="fine" id="floorNote"></p>
+  </section>
+
+  <section>
+    <h3>방음벽 유형 <span style="color:var(--muted); font-weight:400">(팔별 · 상/하단별)</span></h3>
+    <div class="card" id="armN"></div>
+    <div class="card" id="armE"></div>
+    <div class="row"><label>T3 목재 지주 사용</label><input type="checkbox" id="woodPost"></div>
+    <div class="row"><label>T10 벽면 녹화 시기</label>
+      <div class="seg" style="flex:1; max-width:170px" id="vineSeg"><button data-a="new" class="on">준공 직후</button><button data-a="old">5년 후</button></div>
+    </div>
+    <p class="fine">투명판에는 조류충돌 방지 무늬를 항상 적용(｢야생생물 보호 및 관리에 관한 법률｣ 제8조의2, ｢방음시설의 성능 및 설치기준｣ 제13조). 무늬 5×10 규격은 가이드라인 기준이며 원문 확인 필요.</p>
+  </section>
+
+  <section>
+    <h3>유형 비교 (같은 시점 2×2)</h3>
+    <button class="primary" id="cmpBtn">T1 · T4 · T7 · T9 비교</button>
+    <div class="row" id="cmpViewRow" style="display:none"><label>비교 시점</label>
+      <div class="seg" style="flex:1; max-width:170px" id="cmpViewSeg"><button data-cv="V2" class="on">V2 보행자</button><button data-cv="V4">V4 창</button></div>
+    </div>
+  </section>
+
+  <section>
+    <h3>환경</h3>
+    <div class="btnrow" id="sunBtns">
+      <button class="pill" data-s="winter">동지 정오</button>
+      <button class="pill on" data-s="equinox">춘분 정오</button>
+      <button class="pill" data-s="summer">하지 정오</button>
+      <button class="pill" data-s="pm3">춘분 오후 3시</button>
+    </div>
+    <div class="row"><label>10 m 격자</label><input type="checkbox" id="gridChk" checked></div>
+    <div class="row"><label>벽 뒤 건물 표시</label><input type="checkbox" id="villaChk" checked></div>
+  </section>
+
+  <section>
+    <button class="linkbtn" id="assumeBtn">가정값 · 근거 보기 ›</button>
+  </section>
+</div></div>
+
+<dialog id="assumeDlg"><div class="dwrap">
+  <button class="pill close" id="assumeClose">닫기</button>
+  <h3>가정값</h3>
+  <ul id="assumeList"></ul>
+  <h4>근거 (config.js의 sources)</h4>
+  <ul id="sourceList"></ul>
+  <h4>한계</h4>
+  <ul>
+    <li>치수 검토용 단순 모델입니다. 건물 입면·색상·주변 농촌 맥락은 임의 표현입니다.</li>
+    <li>폐쇄감의 국내 법정 정량기준이 없으므로 수치는 대안 간 상대비교로 읽습니다.</li>
+  </ul>
+</div></dialog>
+
+<div id="err"></div>
+<script type="module" src="app.js"></script>
+</body>
+</html>
